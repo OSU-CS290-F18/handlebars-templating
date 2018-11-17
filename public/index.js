@@ -31,9 +31,15 @@ function handleModalAcceptClick() {
     alert("You must fill in all of the fields!");
   } else {
 
-    var newPhotoCard = createPhotoCard(photoURL, caption);
+    // var newPhotoCard = createPhotoCard(photoURL, caption);
+    var photoCardHTML = Handlebars.templates.photoCard({
+      url: photoURL,
+      caption: caption
+    });
+    console.log("== photoCardHTML:", photoCardHTML);
     var photoCardContainer = document.querySelector('.photo-card-container');
-    photoCardContainer.appendChild(newPhotoCard);
+    photoCardContainer.insertAdjacentHTML('beforeend', photoCardHTML);
+    // photoCardContainer.appendChild(newPhotoCard);
     hideModal();
 
   }
